@@ -45,7 +45,7 @@
 				// name : doc.data().name,
 				// id: doc.id,
 				// description: '<img src="' + doc.data().image + '">',
-				// position : Cesium.Cartesian3.fromDegrees(doc.data().latitude, doc.data().longitude),
+				// position : Cesium.Cartesian3.fromDegrees(doc.data().longitude, doc.data().latitude),
 				// billboard : {
 					// image : pinBuilder.fromText('📢', Cesium.Color.BLACK, 32).toDataURL(),
 					// verticalOrigin : Cesium.VerticalOrigin.BOTTOM
@@ -55,7 +55,7 @@
 			   name : doc.data().name,
 				id: doc.id,
 				description: '<img src="' + doc.data().image + '">',
-				position : Cesium.Cartesian3.fromDegrees(doc.data().latitude, doc.data().longitude),
+				position : Cesium.Cartesian3.fromDegrees(doc.data().longitude, doc.data().latitude),
 				billboard : {
 					image : pinBuilder.fromText('📢', Cesium.Color.BLACK, 32).toDataURL(),
 					verticalOrigin : Cesium.VerticalOrigin.BOTTOM
