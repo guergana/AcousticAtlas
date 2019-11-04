@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat:400,700" rel="stylesheet">
+        <meta charset="utf-8" name='viewport' 
+       content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+  
+      <title>Acoustic Atlas</title>
+      <meta name="description" content="Test v0.1">
+      <meta name="author" content="Cobi van Tonder, Carlo Cattano & Guergana Tzatchkova">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--//should this be here?
+    <script type="text/javascript" src="./scripts/StartAudioContext.js" ></script>
+--->
+ <script type="text/javascript" src="./scripts/Tone.js" ></script>
+    <script src="scripts/NexusUI.js"></script>
+	
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.62/Build/Cesium/Cesium.js"></script>
+ <link href="https://cesium.com/downloads/cesiumjs/releases/1.62/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/basic.css"> 
+    <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-storage.js"></script>
+</head>
+<body>
+<!--<div class="panel-left">
+		<div class="instruction">
+			<i class="fas fa-headphones"></i>
+			<span>Put on Headphones!</span>
+		</div>
+		<div class="instruction">
+			<i class="fas fa-search-location"></i>
+			<span>Send Location</span>
+		</div>
+		<div class="instruction">
+			<i class="fas fa-microphone-alt"></i>
+			<span>Sing/Make a sound</span>
+		</div>
+		<div class="instruction">
+			<i class="fas fa-music"></i>
+			<span>Record a cave song</span>
+		</div>
+		<div class="instruction">
+			<i class="fas fa-globe-americas"></i>
+			<span>Listen to more experiences</span>
+		</div>
+	</div> -->
+	<div class="panel-left">
+	<div class="info-bar-top">
+				<div class="starterButton" id="start">Waiting for Microphone input</div>
+				<div class="buttonX" id="muteB"><i class="fas"></i></div>
+				<div class="hint" id="hint">Headphones required</div>
+				<!-- Contains control interface objects -->
+				<!--<div class="control">
+					<div id="target" ></div>
+					<p id="filterDisp">HighPass Filter</p>
+				</div> -->
+				
+				<div class="control">
+					<div id="target2" ></div>
+					<p id="conv">Dry / Wet</p>
+				</div>
+				<div class="control">
+					<div id="toggle" ></div>
+					<p id="Ambient1">Ambient 1</p>
+				</div>
+				<div class="control">
+					<div id="toggle2" ></div>
+					<p id="Ambient2">Ambient 2</p>
+				</div>
+           
+			</div>
+			<div id="cesiumContainer" style="width: 100%;height:99%"></div>
+	</div>
+	<div class="panel-right">
+			 <div id="image-container">
+			 <!-- <div class="close"><i class="fas fa-times-circle"></i></div>-->
+			 <div class="fullscreen"><i class="fas fa-expand"></i></div>
+				<img src=""/>
+				
+			</div>
+			<div id="description-container"><span>Acoustic Atlas aims to digitally preserve the acoustics and soundscapes of natural and cultural world heritage sites. The project’s innovative approach will make the acoustical heritage of endangered heritage sites widely accessible. It will bring environmental, educational, conservation and artistic benefits by promoting and enriching heritage research and connecting international researchers and sound artists in the field of heritage acoustics. The online web-audio platform enables Acoustic Atlas to run on most computers or mobile devices and utilizes the built-in microphone and headphone output of a device to transport a visitor to the selected heritage site via headphones and live microphone feed. Any participant can thus interact with the acoustic simulation (termed auralization) of each site from a first-person point of hearing. The user can click on an image of a location, control various aspects of the sound whilst singing or projecting any sound in real-time, into a simulation of the selected site, to hear the reverberations, resonances and echoes thus experience it in a direct sensory way. Acoustic Atlas is suitable for presentation on a computer kiosk with headphones as long as there is a built-in or plug-in microphone available on the computer.</span></div>
+	<!--<div class="panel-bottom">
+		<a class="slider-img" id="test1"><img src="img/spro.jpg" alt="SproCave" id="img1"></a>
+		<a class="slider-img" id="test2"><img src="img/ebene.jpg" alt="Snow" id="img2"></a>
+		<a class="slider-img" id="test3"><img src="img/tajmahal.jpg" alt="Taj Mahal" id="img3"></a>
+		<a class="slider-img" id="test4"><img src="img/mellisaniunderwater.jpg" alt="Snow" id="img4"></a>
+		<a class="slider-img" id="test5"><img src="img/York.jpg" alt="York" id="img5"></a>
+	</div>-->
+</div>
+
+<script type="text/javascript" src="./scripts/audio_manager.js" ></script>
+<script type="text/javascript" src="./scripts/controller.js"></script>
+<script src="./scripts/db-globe.js"></script>
+</body>
+</html>

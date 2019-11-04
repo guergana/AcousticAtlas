@@ -1,0 +1,87 @@
+html * {
+    /*font-family: Verdana !important;*/
+}
+body {
+    margin-left: 15%;
+}
+h2 {
+    height: 10px;
+}
+
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+    position: relative;
+    width: 70%;
+    height: 70%;
+    margin-bottom: 10%;
+}
+/* Container needed to scale map. Adjust the width as needed */
+.mapcontainer {
+    position: relative;
+    width: 10%;
+    height: 10%;
+    margin-bottom: 10%;
+}
+/* Make the image responsive */
+    .container img {
+        width: 100%;
+        height: 100%;
+    }
+/* Style the button and place it in the middle of the container/image */
+  /*  .container .btn {
+        position: absolute;
+        bottom: 50%;
+        left: 50%; 
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color:rgba(255,255,255,0.1);
+        color: black;
+        font-size: 22px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+        .container .btn:hover {
+            background-color: rgb(255, 216, 0,0.6);
+            color: black;
+           
+        }*/
+
+.starterButton {
+    position: relative;
+    font-size:12px;
+	color: red;
+}
+.hint {
+    display: inline-block;
+    margin-left: 15%;
+    position: relative;
+    font-size: 11px;
+}
+.buttonX {
+    color: rgb(255, 216, 0,0.7);
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+}
+    .buttonX:hover {
+        background-color: rgb(255, 216, 0,0.3);
+        color: black;
+    }
+.placeName {
+    margin-bottom:4%;
+}
+
+
+.control .mdc-slider {
+	width: 100px;
+}
+
+.control p {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+	font-size: 0.8em;
+}
