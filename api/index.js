@@ -5,10 +5,19 @@ module.exports = (req, res) => {
   const { name = "World" } = req.query;
   //res.send(`Hello ${name}!`);
   const path = "../img/Bristol_Cathedral_Lady_Chapel_Bristol_UK_-_Diliff.jpg";
-  const readStream = fs.createReadStream(path);
-  let transform = sharp()
-    .toFormat("jpg")
-    .resize(1024, 860);
+  let transform = sharp("path")
+    .rotate()
+    .resize(1024, 840)
+    .toBuffer()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.send("error:", err);
+    });
+  //   let transform = sharp()
+  //     .toFormat("jpg")
+  //     .resize(1024, 860);
   //res.send(readStream.pipe(transform));
-  return readStream.pipe(transform);
+  //return readStream.pipe(transform);
 };
