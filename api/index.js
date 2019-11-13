@@ -9,6 +9,6 @@ module.exports = (req, res) => {
   let transform = sharp()
     .toFormat("jpg")
     .resize(1024, 860);
-  //res.send(readStream.pipe(transform));
-  return readStream.pipe(transform);
+  res.send(readStream.pipe(transform));
+  //return readStream.pipe(transform);
 };
