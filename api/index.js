@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   const { name = "World" } = req.query;
   //res.send(`Hello ${name}!`);
   const path = "../img/Bristol_Cathedral_Lady_Chapel_Bristol_UK_-_Diliff.jpg";
-  let transform = sharp("path")
+  let transform = sharp(path)
     .rotate()
     .resize(1024, 840)
     .toBuffer()
