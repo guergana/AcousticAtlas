@@ -204,10 +204,13 @@ handler.setInputAction(function(e) {
             )[0];
             let imageSet = document.querySelectorAll("#image-container img")[0];
             console.log("imageSet", imageSet);
-            let imageNew = img_create(doc.data().image, doc.data().name);
-
+            //let imageNew = img_create(doc.data().image, doc.data().name);
+            //imageSet.replaceWith(imageNew);
             descriptionContainer.innerHTML = doc.data().description;
-            imageSet.replaceWith(imageNew);
+            
+
+            imageContainer.style.backgroundImage =
+              "url('img/" + doc.data().image + "')";
 
             imageContainer.style.display = "block";
             loadIr("./ir/" + doc.data().IR_filename);
