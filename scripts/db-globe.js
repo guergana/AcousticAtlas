@@ -214,7 +214,11 @@ handler.setInputAction(function(e) {
 
             imageContainer.style.display = "block";
             loadIr("./ir/" + doc.data().IR_filename);
+            loadAmbient1("./audios/"+ doc.data().Ambient1_filename);
+            loadAmbient2("./audios/"+ doc.data().Ambient2_filename);
             console.log("Document data:", doc.data());
+
+
           } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
