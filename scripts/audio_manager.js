@@ -99,8 +99,8 @@ const player = new Tone.Player("./audios/1.mp3").toMaster();
 const player2 = new Tone.Player("./audios2/2.mp3").toMaster();
 
 player.autostart = false;
-player.loop = true;
-player.volume.value = -6;  // Volume of the ambience
+player.loop = false;
+player.volume.value = -2;  // Volume of the ambience
 player2.autostart = false;
-player2.loop = true;
-player2.volume.value = -6; 
+player2.loop = false;
+player2.volume.value = -2; 
