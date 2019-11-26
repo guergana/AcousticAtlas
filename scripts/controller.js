@@ -45,31 +45,31 @@ target2.on("change", function(v) {
   conv.innerHTML = " Dry/Wet " + Math.round(v * 100) + "%";
 });
 
-toggle.on("change", function(v) {
-  console.log(v);
-  if (v) {
-    player.start();
-    player.volume.setValueAtTime(-22, 2);
-    Ambient1.innerHTML = "Ambient s1 On";
-  } else {
-    player.stop();
-    player.volume.setValueAtTime(-Infinity, 4);
-    Ambient1.innerHTML = "Ambient 1 off";
-  }
-});
+//toggle.on("change", function(v) {
+//  console.log(v);
+//  if (v) {
+//    player.start();
+//    player.volume.setValueAtTime(-22, 2);
+//    Ambient1.innerHTML = "Ambient s1 On";
+//  } else {
+//    player.stop();
+//    player.volume.setValueAtTime(-Infinity, 4);
+//    Ambient1.innerHTML = "Ambient 1 off";
+//  }
+//});
 
-toggle2.on("change", function(v) {
-  console.log(v);
-  if (v) {
-    player2.start();
-    player2.volume.setValueAtTime(-22, 2);
-    Ambient2.innerHTML = "Ambient 2 On";
-  } else {
-    player2.stop();
-    player.volume.setValueAtTime(-Infinity, 4);
-    Ambient2.innerHTML = "Ambient 2 off";
-  }
-});
+//toggle2.on("change", function(v) {
+//  console.log(v);
+//  if (v) {
+//    player2.start();
+//    player2.volume.setValueAtTime(-22, 2);
+//    Ambient2.innerHTML = "Ambient 2 On";
+//  } else {
+//    player2.stop();
+//    player.volume.setValueAtTime(-Infinity, 4);
+//    Ambient2.innerHTML = "Ambient 2 off";
+//  }
+//});
 
 // const closeImageBtn = document.querySelector("#image-container .close");
 // closeImageBtn.onclick = function(){
