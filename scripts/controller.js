@@ -18,19 +18,19 @@ var target2 = new Nexus.Slider("#target2", {
 
 target2.colorize("accent", "#666");
 
-var toggle = new Nexus.Toggle("#toggle", {
-  size: [60, 10],
-  state: false
-});
+// var toggle = new Nexus.Toggle("#toggle", {
+//   size: [60, 10],
+//   state: false
+// });
 
-toggle.colorize("accent", "#666");
+//toggle.colorize("accent", "#666");
 
-var toggle2 = new Nexus.Toggle("#toggle2", {
-  size: [60, 10],
-  state: false
-});
+// var toggle2 = new Nexus.Toggle("#toggle2", {
+//   size: [60, 10],
+//   state: false
+// });
 
-toggle2.colorize("accent", "#666");
+// toggle2.colorize("accent", "#666");
 
 //////////////// ACTIONS ON INPUT
 
@@ -45,37 +45,39 @@ target2.on("change", function(v) {
   conv.innerHTML = " Dry/Wet " + Math.round(v * 100) + "%";
 });
 
-toggle.on("change", function(v) {
-  console.log(v);
-  if (v) {
-    player.start();
-    player.volume.setValueAtTime(-22, 2);
-    Ambient1.innerHTML = "Ambient s1 On";
-  } else {
-    player.stop();
-    player.volume.setValueAtTime(-Infinity, 4);
-    Ambient1.innerHTML = "Ambient 1 off";
-  }
-});
+// toggle.on("change", function(v) {
+//   console.log(v);
+//   if (v) {
+//     player.start();
+//     player.volume.setValueAtTime(-22, 2);
+//     Ambient1.innerHTML = "Ambient s1 On";
+//   } else {
+//     player.stop();
+//     player.volume.setValueAtTime(-Infinity, 4);
+//     Ambient1.innerHTML = "Ambient 1 off";
+//   }
+// });
 
-toggle2.on("change", function(v) {
-  console.log(v);
-  if (v) {
-    player2.start();
-    player2.volume.setValueAtTime(-22, 2);
-    Ambient2.innerHTML = "Ambient 2 On";
-  } else {
-    player2.stop();
-    player.volume.setValueAtTime(-Infinity, 4);
-    Ambient2.innerHTML = "Ambient 2 off";
-  }
-});
+// toggle2.on("change", function(v) {
+//   console.log(v);
+//   if (v) {
+//     player2.start();
+//     player2.volume.setValueAtTime(-22, 2);
+//     Ambient2.innerHTML = "Ambient 2 On";
+//   } else {
+//     player2.stop();
+//     player.volume.setValueAtTime(-Infinity, 4);
+//     Ambient2.innerHTML = "Ambient 2 off";
+//   }
+// });
 
-// const closeImageBtn = document.querySelector("#image-container .close");
-// closeImageBtn.onclick = function(){
-// const container = document.getElementById("image-container");
-// container.style.display =  'none';
-// };
+const closeImageBtn = document.querySelector("#image-container .close");
+closeImageBtn.onclick = function() {
+  const container = document.getElementsByClassName("panel-right")[0];
+  container.style.display = "none";
+  const containerMap = document.getElementsByClassName("panel-left")[0];
+  containerMap.style.height = "100vh";
+};
 
 let fullscreenOn = false;
 

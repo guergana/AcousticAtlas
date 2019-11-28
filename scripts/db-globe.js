@@ -187,10 +187,10 @@ handler.setInputAction(function(e) {
       var longitudeString = Cesium.Math.toDegrees(cartographic.longitude);
       var latitudeString = Cesium.Math.toDegrees(cartographic.latitude);
       //pickedEntity.position = cartesian;
-      var name = pickedEntity.name;
+      //var name = pickedEntity.name;
       var id = pickedEntity.id;
-      var result =
-        id + "- " + name + ": " + longitudeString + ", " + latitudeString; // We can reuse this
+      // var result =
+      //   id + "- " + name + ": " + longitudeString + ", " + latitudeString; // We can reuse this
 
       var docRef = db.collection("locations").doc(id);
 
@@ -207,7 +207,19 @@ handler.setInputAction(function(e) {
             //let imageNew = img_create(doc.data().image, doc.data().name);
             //imageSet.replaceWith(imageNew);
             descriptionContainer.innerHTML = doc.data().description;
-            
+            descriptionContainer.parentNode.style.position = "absolute";
+            descriptionContainer.parentNode.style.bottom = 0;
+
+            //mobile
+            if (document.body.clientWidth <= 600) {
+              let rightPanel = document.querySelector(".panel-right");
+              rightPanel.style.display = "block";
+              rightPanel.style.position = "absolute";
+              rightPanel.style.width = "100vw";
+              rightPanel.style.height = "100vh";
+              descriptionContainer.style.overflow = "scroll";
+              descriptionContainer.parentNode.style.maxHeight = "200px";
+            }
 
             imageContainer.style.backgroundImage =
               "url('img/" + doc.data().image + "')";
@@ -215,6 +227,20 @@ handler.setInputAction(function(e) {
             imageContainer.style.display = "block";
             loadIr("./ir/" + doc.data().IR_filename);
             console.log("Document data:", doc.data());
+
+            //color active marker
+            // let allBillboards =
+            //   dataSourceForCluster._primitives._primitives[0]
+            //     ._billboardCollection._billboards;
+            // console.log("allBillboards", allBillboards);
+
+            // if (Cesium.isArray(allBillboards)) {
+            //   for (let i = 0; i < allBillboards.length; ++i) {
+            //     allBillboards[i].color = Cesium.Color.WHITE;
+            //     allBillboards[i].scale = 1.0;
+            //   }
+            // }
+            //pickedEntity.billboard.color = Cesium.Color.RED;
           } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
