@@ -78,12 +78,29 @@ function loadIr(ir){
 
 //this is for the controls at the top
 
-const player = new Tone.Player("./audios/capevidal.mp3").toMaster();
-const player2 = new Tone.Player("./audios/spin.mp3").toMaster();
+function loadAmbient1(sound){
+	
+    player.load(sound).then(function () {
+    Tone.Master.mute = false;
+	icon.className = 'fas fa-microphone-alt';
+    });
+}
+
+function loadAmbient2(sound){
+	
+    player.load(sound).then(function () {
+    Tone.Master.mute = false;
+	icon.className = 'fas fa-microphone-alt';
+    });
+}
+
+
+const player = new Tone.Player("./audios/1.mp3").toMaster();
+const player2 = new Tone.Player("./audios2/2.mp3").toMaster();
 
 player.autostart = false;
-player.loop = true;
-player.volume.value = -18;  // Volume of the ambience
+player.loop = false;
+player.volume.value = -2;  // Volume of the ambience
 player2.autostart = false;
-player2.loop = true;
-player2.volume.value = -18; 
+player2.loop = false;
+player2.volume.value = -2; 
