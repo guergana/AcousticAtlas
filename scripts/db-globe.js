@@ -56,14 +56,12 @@ db.collection("locations")
       // verticalOrigin : Cesium.VerticalOrigin.BOTTOM
       // }
       // });
+      const { image, longitude, latitude } = doc.data();
       dataSourceForCluster.entities.add({
         name: doc.data().name,
         id: doc.id,
-        description: '<img src="' + doc.data().image + '">',
-        position: Cesium.Cartesian3.fromDegrees(
-          doc.data().longitude,
-          doc.data().latitude
-        ),
+        description: '<img src="' + image + '">',
+        position: Cesium.Cartesian3.fromDegrees(longitude, latitude),
         billboard: {
           image: pinBuilder.fromText("📢", Cesium.Color.BLACK, 32).toDataURL(),
           verticalOrigin: Cesium.VerticalOrigin.BOTTOM
@@ -184,8 +182,8 @@ handler.setInputAction(function(e) {
     );
     if (cartesian) {
       var cartographic = ellipsoid.cartesianToCartographic(cartesian);
-      var longitudeString = Cesium.Math.toDegrees(cartographic.longitude);
-      var latitudeString = Cesium.Math.toDegrees(cartographic.latitude);
+      // var longitudeString = Cesium.Math.toDegrees(cartographic.longitude);
+      // var latitudeString = Cesium.Math.toDegrees(cartographic.latitude);
       //pickedEntity.position = cartesian;
       //var name = pickedEntity.name;
       var id = pickedEntity.id;
@@ -197,7 +195,10 @@ handler.setInputAction(function(e) {
       docRef
         .get()
         .then(function(doc) {
-          if (doc.exists) {
+          const { IR_filename } = doc.data();
+
+          if (doc.exists && IR_filename) {
+            const { description, image, image_credit, IR_credit } = doc.data();
             let imageContainer = document.getElementById("image-container");
             let descriptionContainer = document.querySelectorAll(
               "#description-container span"
@@ -206,7 +207,17 @@ handler.setInputAction(function(e) {
             console.log("imageSet", imageSet);
             //let imageNew = img_create(doc.data().image, doc.data().name);
             //imageSet.replaceWith(imageNew);
-            descriptionContainer.innerHTML = doc.data().description;
+            descriptionContainer.innerHTML = description;
+            if (image_credit || IR_credit) {
+              const imageCreditContainer = document.createElement("div");
+              imageCreditContainer.style.fontSize = "0.8em";
+              let creditsText = "";
+              if (image_credit)
+                creditsText += "Photo by: " + image_credit + ".";
+              if (IR_credit) creditsText += " IR Credit: " + IR_credit + ".";
+              imageCreditContainer.innerHTML = creditsText;
+              descriptionContainer.appendChild(imageCreditContainer);
+            }
             descriptionContainer.parentNode.style.position = "absolute";
             descriptionContainer.parentNode.style.bottom = 0;
 
@@ -221,11 +232,10 @@ handler.setInputAction(function(e) {
               descriptionContainer.parentNode.style.maxHeight = "200px";
             }
 
-            imageContainer.style.backgroundImage =
-              "url('img/" + doc.data().image + "')";
+            imageContainer.style.backgroundImage = "url('img/" + image + "')";
 
             imageContainer.style.display = "block";
-            loadIr("./ir/" + doc.data().IR_filename);
+            loadIr("./ir/" + IR_filename);
             //loadAmbient1("./audios/"+ doc.data().Ambient1_filename);
             //loadAmbient2("./audios2/"+ doc.data().Ambient2_filename);
             console.log("Document data:", doc.data());

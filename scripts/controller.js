@@ -13,7 +13,7 @@ var target2 = new Nexus.Slider("#target2", {
   min: 0,
   max: 1,
   step: 0.02,
-  value: 1
+  value: window.CONFIG.DRYWET || 0.5
 });
 
 target2.colorize("accent", "#666");
