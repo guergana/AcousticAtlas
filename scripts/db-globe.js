@@ -231,7 +231,7 @@ handler.setInputAction(function(e) {
                 creditsText +=
                   " <a href='" +
                   image_link +
-                  " alt='" +
+                  "' alt='" +
                   image_credit +
                   "' target='_blank'>Image Source </a>";
               if (IR_credit)
@@ -240,7 +240,7 @@ handler.setInputAction(function(e) {
                 creditsText +=
                   " <a href='" +
                   IR_link +
-                  " alt='" +
+                  "' alt='" +
                   IR_credit +
                   "' target='_blank'>IR source </a>";
               creditContainer.innerHTML = creditsText;
