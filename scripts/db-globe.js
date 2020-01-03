@@ -146,13 +146,18 @@ handler.setInputAction(function(movement) {
     ? pickedPrimitive.id
     : undefined;
   let billboard;
+  const cesiumContainer = document.getElementById("cesiumContainer");
   if (pickedEntity) {
+    cesiumContainer.style.cursor = "pointer";
+
     if (Cesium.isArray(pickedEntity)) {
       //billboard = pickedPrimitive.collection._billboards[0];
       //need to find return billboard, with this i always get the first billboard in the whole collection
     } else {
       billboard = pickedEntity.billboard;
     }
+  } else {
+    cesiumContainer.style.cursor = "default";
   }
   // Unhighlight the previously picked entity
   if (Cesium.defined(previousPickedEntity)) {
@@ -198,7 +203,14 @@ handler.setInputAction(function(e) {
           const { IR_filename } = doc.data();
 
           if (doc.exists && IR_filename) {
-            const { description, image, image_credit, IR_credit } = doc.data();
+            const {
+              description,
+              image,
+              image_credit,
+              IR_credit,
+              IR_link,
+              image_link
+            } = doc.data();
             let imageContainer = document.getElementById("image-container");
             let descriptionContainer = document.querySelectorAll(
               "#description-container span"
@@ -209,14 +221,30 @@ handler.setInputAction(function(e) {
             //imageSet.replaceWith(imageNew);
             descriptionContainer.innerHTML = description;
             if (image_credit || IR_credit) {
-              const imageCreditContainer = document.createElement("div");
-              imageCreditContainer.style.fontSize = "0.8em";
+              const creditContainer = document.createElement("div");
+              creditContainer.classList.add("credit-container");
+              creditContainer.style.fontSize = "0.8em";
               let creditsText = "";
               if (image_credit)
-                creditsText += "Photo by: " + image_credit + ".";
-              if (IR_credit) creditsText += " IR Credit: " + IR_credit + ".";
-              imageCreditContainer.innerHTML = creditsText;
-              descriptionContainer.appendChild(imageCreditContainer);
+                creditsText += "<br/> Photo by: " + image_credit + ".";
+              if (image_link)
+                creditsText +=
+                  " <a href='" +
+                  image_link +
+                  " alt='" +
+                  image_credit +
+                  "' target='_blank'>Image Source </a>";
+              if (IR_credit)
+                creditsText += "<br/>IR Credit: " + IR_credit + ".";
+              if (IR_link)
+                creditsText +=
+                  " <a href='" +
+                  IR_link +
+                  " alt='" +
+                  IR_credit +
+                  "' target='_blank'>IR source </a>";
+              creditContainer.innerHTML = creditsText;
+              descriptionContainer.appendChild(creditContainer);
             }
             descriptionContainer.parentNode.style.position = "absolute";
             descriptionContainer.parentNode.style.bottom = 0;

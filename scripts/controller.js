@@ -85,13 +85,6 @@ let fullscreenButton = document.querySelector("#image-container .fullscreen");
 fullscreenButton.addEventListener(
   "click",
   function(event) {
-    // if (!fullscreenOn) {
-    //   document.querySelector(".panel-right").requestFullscreen();
-    //   fullscreenOn = true;
-    // } else {
-    //   document.exitFullscreen();
-    //   fullscreenOn = false;
-    // }
     if (!fullscreenOn) {
       const elem = document.querySelector("#image-container");
       if (elem.requestFullscreen) {

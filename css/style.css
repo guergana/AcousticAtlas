@@ -122,6 +122,11 @@ height: 100%; calc(100% - 100px);
   cursor: pointer;
 }
 
+.credit-container a {
+  color: white;
+  text-decoration: underline;
+}
+
 /*.panel-right:fullscreen #description-container,
 .panel-right:-webkit-full-screen #description-container,
 .panel-right:-moz-full-screen #description-container,
